@@ -18,6 +18,23 @@ defmodule ListsAndRecursion do
     _mapsum(tail, value + func.(head), func)
   end
 
+
+  def max([]), do: nil
+
+  def max([head | []]), do: head
+
+  def max([head | tail = [_ | _]]) do
+    max(head, max(tail))
+  end
+
+  def max([head | tail]) when head >= tail do
+    head
+  end
+
+  def max([head | tail]) when head < tail do
+    tail
+  end
+
   # Just for fun while I'm thinking about it
   def join(_list, sep \\ " ")
 
